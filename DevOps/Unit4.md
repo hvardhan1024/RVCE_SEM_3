@@ -43,38 +43,7 @@ Kubernetes follows a **Master-Worker** architecture with two main components:
 - **Control Plane (Master Node)**: Manages the cluster
 - **Worker Nodes**: Run the actual applications
 
-```mermaid
-graph TB
-    subgraph Control_Plane["Control Plane (Master)"]
-        API[API Server]
-        SCHED[Scheduler]
-        CM[Controller Manager]
-        CCM[Cloud Controller Manager]
-        ETCD[(etcd)]
-    end
-
-    subgraph Worker_Node_1["Worker Node 1"]
-        KUBELET1[Kubelet]
-        KPROXY1[Kube-proxy]
-        POD1[Pods]
-    end
-
-    subgraph Worker_Node_2["Worker Node 2"]
-        KUBELET2[Kubelet]
-        KPROXY2[Kube-proxy]
-        POD2[Pods]
-    end
-
-    API --> KUBELET1
-    API --> KUBELET2
-    SCHED --> API
-    CM --> API
-    ETCD --> API
-
-    style Control_Plane fill:#e1f5ff
-    style Worker_Node_1 fill:#fff4e1
-    style Worker_Node_2 fill:#fff4e1
-```
+https://kubernetes.io/images/docs/kubernetes-cluster-architecture.svg
 
 ### 2.2 Control Plane Components
 

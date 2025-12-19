@@ -43,7 +43,7 @@ Kubernetes follows a **Master-Worker** architecture with two main components:
 - **Control Plane (Master Node)**: Manages the cluster
 - **Worker Nodes**: Run the actual applications
 
-https://kubernetes.io/images/docs/kubernetes-cluster-architecture.svg
+![k8s architecture](https://kubernetes.io/images/docs/kubernetes-cluster-architecture.svg)
 
 ### 2.2 Control Plane Components
 

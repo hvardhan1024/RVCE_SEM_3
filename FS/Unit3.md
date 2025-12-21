@@ -48,10 +48,10 @@ NoSQL databases emerged to address relational database limitations:
 
 **NoSQL Design Patterns:**
 
-1. **Key-Value Stores** - Simple key-value pairs
-2. **Column Stores** - Data stored in columns
-3. **Object Stores** - Object-oriented data storage
-4. **Document Stores** - Most popular, stores hierarchical documents
+1. **Key-Value Stores** - Simple key-value pairs - redis
+2. **Column Stores** - Data stored in columns -  cassandra
+3. **Object Stores** - Object-oriented data storage - s3
+4. **Document Stores** - Most popular, stores hierarchical documents - Mongodb
 
 ### 1.3 Relational vs Document Databases
 
@@ -3404,3 +3404,4 @@ const UserSchema = new Schema({
 ---
 
 **End of UNIT III Notes**
+

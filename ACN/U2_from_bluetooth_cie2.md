@@ -49,6 +49,8 @@
 [[Scatternet diagram showing multiple overlapping piconets with bridge devices]]
 
 ### 1.4 Bluetooth Protocol Stack
+<img width="660" height="451" alt="image" src="https://github.com/user-attachments/assets/56519d56-a3a2-4940-a0db-add29572afae" />
+
 
 The Bluetooth protocol stack is divided into layers:
 

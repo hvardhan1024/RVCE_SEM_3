@@ -159,6 +159,9 @@ A small ad hoc network created when Bluetooth devices connect together.
 | **Parked Slaves** | Up to 255 additional devices on standby |
 | **Channel** | All devices in a piconet use the same physical channel |
 
+
+<img width="227" height="202" alt="image" src="https://github.com/user-attachments/assets/dd312874-b34a-4e4c-a236-22de2e24c6c8" />
+
 **How it works:**
 1. One device becomes the **master** (controller)
 2. Up to 7 other devices become **active slaves**
@@ -199,7 +202,6 @@ Every Bluetooth device has an internal clock.
 1. Device Address (48-bit)
 2. Native Clock (28-bit)
 
-[[Image showing piconet structure with master and slaves]]
 
 ---
 

@@ -995,3 +995,26 @@ The probability that a handoff completes successfully when a user crosses a cell
 |--------|-------------|
 | **Available Channels** | Number of free channel pairs in adjacent cells |
 | **Switching Capacity** | Ability to switch before signal falls below acceptable
+
+
+# 📡 Strategies to Improve Handoff (Short Notes)
+
+## 1. Prioritization
+- Handoffs get **higher priority** than new calls  
+- Some channels are **reserved for handoff**
+- Prevents **call drops**
+
+## 2. Predictive Handoff
+- Predicts user movement using **location data**
+- Channels are **allocated in advance**
+- Reduces handoff delay
+
+## 3. Adaptive Handoff
+- User moved between **pico / micro / macro cells**
+- Based on **user speed**
+- Improves efficiency
+
+## 4. Soft Handoff
+- **Overlapping cell coverage**
+- Mobile connects to **multiple base stations**
+- Smooth, no call break

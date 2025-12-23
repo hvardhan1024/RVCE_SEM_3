@@ -2,477 +2,992 @@
 
 ---
 
-## 1. Bluetooth Technology
+## BLUETOOTH
 
-### 1.1 Overview
-- **What it is**: Short-range wireless technology for connecting devices (typically 10m range)
-- **Purpose**: Cable replacement, ad-hoc networking between personal devices
-- **Operates in**: 2.4 GHz ISM band (unlicensed)
-- **Standard**: IEEE 802.15.1
+### Personal Area Network (PAN)
 
-### 1.2 Bluetooth Specifications
+**What it is:**  
+A network that connects personal devices (like phones, laptops, headphones) wirelessly within a small area.
 
-| Parameter | Specification |
-|-----------|---------------|
-| Frequency Band | 2.4 GHz ISM (2.402 - 2.480 GHz) |
-| Number of Channels | 79 channels (1 MHz each) |
-| Modulation | GFSK (Gaussian Frequency Shift Keying) |
-| Data Rate | 1 Mbps (Basic), up to 3 Mbps (EDR - Enhanced Data Rate) |
-| Range | Class 1: 100m, Class 2: 10m, Class 3: 1m |
-| Power Consumption | Very low (milliwatts) |
-| Topology | Piconet and Scatternet |
-| Maximum Devices | 8 active devices per piconet |
+**Why it is needed:**  
+People need their devices to communicate with each other without wires and without needing Wi-Fi routers or internet infrastructure.
 
-### 1.3 Bluetooth Network Topology
-
-#### Piconet
-- **What it is**: Basic Bluetooth network unit consisting of one master and up to 7 active slaves
-- **Structure**: Master-slave architecture
-- **Master**: Controls the piconet, provides clock synchronization
-- **Slaves**: Synchronized to master's clock and frequency hopping pattern
-- **Parked Devices**: Up to 255 devices can be in parked (inactive) state
-
-**Piconet Formation Steps:**
-1. **Inquiry Phase**: Master device searches for nearby Bluetooth devices
-2. **Inquiry Scan**: Slave devices listen for inquiry messages
-3. **Paging Phase**: Master pages specific devices to establish connection
-4. **Connection Establishment**: Slaves synchronize with master's clock and hopping sequence
-5. **Active Communication**: Data exchange begins with master controlling channel access
-
-[[Piconet diagram showing 1 master (center) connected to 7 slaves in star topology]]
-
-#### Scatternet
-- **What it is**: Network formed by interconnecting multiple piconets
-- **How**: A device can be a slave in one piconet and master in another, or slave in multiple piconets
-- **Purpose**: Extends network coverage and capacity beyond single piconet limitations
-
-[[Scatternet diagram showing multiple overlapping piconets with bridge devices]]
-
-### 1.4 Bluetooth Protocol Stack
-<img width="660" height="451" alt="image" src="https://github.com/user-attachments/assets/56519d56-a3a2-4940-a0db-add29572afae" />
-
-
-The Bluetooth protocol stack is divided into layers:
-
-| Layer | Protocols/Components | Function |
-|-------|---------------------|----------|
-| **Application Layer** | User Applications | End-user services |
-| **Middleware** | OBEX, WAP | Object exchange, wireless applications |
-| **Upper Layers** | SDP, RFCOMM, TCS | Service discovery, serial port emulation, telephony |
-| **Transport Protocol Group** | L2CAP | Logical Link Control and Adaptation Protocol |
-| **Baseband & Link Manager** | LMP, Baseband | Link management, packet formatting, timing |
-| **Physical Layer** | Radio | RF transmission at 2.4 GHz |
+| Term | Meaning |
+|------|---------|
+| **PAN** | Personal Area Network – connects devices within ~10 meters |
+| **Example** | Connecting your phone to wireless earbuds |
 
 ---
 
-## 2. Transport Protocol Group
+### Bluetooth Special Interest Group (SIG)
 
-### 2.1 L2CAP (Logical Link Control and Adaptation Protocol)
+**What it is:**  
+A group of companies that came together to create a standard for wireless personal device communication.
 
-**Purpose**: Provides connection-oriented and connectionless data services to upper layers
+| Detail | Information |
+|--------|-------------|
+| **Formed** | May 1998 |
+| **Founding Companies** | Ericsson, Intel, IBM, Nokia, Toshiba |
+| **Goal** | Create a common standard so devices from different companies can work together |
 
-**Key Functions:**
-- **Segmentation and Reassembly**: Breaks large packets into smaller baseband packets
-- **Multiplexing**: Allows multiple protocols to share the same physical link
-- **Quality of Service (QoS)**: Negotiates and manages connection parameters
-- **Group Management**: Supports point-to-multipoint communication
+---
+
+### IEEE 802.15.1
+
+**What it is:**  
+An official IEEE standard based on Bluetooth technology.
+
+| Standard | Purpose |
+|----------|---------|
+| **IEEE 802.15.1** | Official standard for Wireless Personal Area Networks (WPANs) |
+
+---
+
+### Bluetooth Definition
+
+**What it is:**  
+A wireless technology that lets devices exchange data over short distances using radio waves.
+
+| Feature | Details |
+|---------|---------|
+| **Frequency Range** | 2.400 to 2.485 GHz (ISM band) |
+| **Range** | Short distances (typically 10-100 meters) |
+| **Wave Type** | UHF (Ultra High Frequency) radio waves |
+| **Purpose** | Exchange data between fixed and mobile devices |
+
+---
+
+## BLUETOOTH Specifications
+
+### Two Main Parts
+
+| Part | Purpose |
+|------|---------|
+| **Core** | Provides basic data link and physical layer functions that all applications can use |
+| **Profiles** | Defines how to use Bluetooth for specific applications (like headsets, file transfer, etc.) |
+
+**Why divided this way:**  
+- **Core** = Common foundation for all Bluetooth devices  
+- **Profiles** = Ensures devices from different manufacturers work together for specific tasks
+
+---
+
+### Core Specification of Bluetooth 1.2
+
+**Key Features:**
+
+| Feature | What it Does |
+|---------|--------------|
+| **Adaptive Frequency-Hopping Spread Spectrum (AFH)** | Avoids radio interference by intelligently jumping between frequencies |
+| **Higher Transmission Speeds** | Up to 721 kbit/s (faster data transfer) |
+| **Extended Synchronous Connections (eSCO)** | Better audio quality for voice calls |
+| **Flow Control and Retransmission Modes** | Ensures reliable data delivery through L2CAP protocol |
+
+---
+
+### Bluetooth Protocol Stack
+
+**What it is:**  
+A layered structure of protocols (rules) that handle different tasks for Bluetooth communication.
+
+<img width="696" height="529" alt="image" src="https://github.com/user-attachments/assets/31eb513e-7eb4-4cae-8edb-5dda4d343adb" />
+
+**What it does:**  
+- Locates nearby devices  
+- Connects to other devices  
+- Exchanges data between devices
+
+---
+
+### Protocol Stack Logical Division
+
+| Group | Contains | Purpose |
+|-------|----------|---------|
+| **Transport Protocol Group** | Radio layer, Baseband layer, Link manager layer, L2CAP, Host Controller Interface | Handles device location, connection setup, and link management |
+| **Middleware Protocol Group** | RFCOMM, SDP, IrDA | Provides APIs and hides transport layer complexity from applications |
+| **Application Group** | Modem dialer, Web browser, etc. | Applications that use Bluetooth links |
+
+---
+
+## Transport Protocol Group
+
+### Purpose
+
+**What it contains:**  
+Protocols that help devices find each other and create/manage wireless connections.
+
+---
+
+### Radio (Physical) Layer
+
+**What it does:**  
+Handles the actual radio transmission – the hardware side of wireless communication.
+
+| Aspect | Details |
+|--------|---------|
+| **Function** | Controls transceiver characteristics (frequency, interference, modulation) |
+| **Frequency Band** | ISM (Industrial, Scientific, Medical) – 2.4 GHz |
+| **Modulation** | GFSK (Gaussian Frequency Shift Keying) |
+| **Speed** | • 64 Kbps for voice channels<br>• Up to 1 Mbps peak for data channels |
+| **Link Range** | • Standard: 10 cm to 10 meters<br>• Extended: >100 meters (with higher transmit power) |
+
+---
+
+### Baseband Layer
+
+**What it does:**  
+Controls how devices share the wireless channel and connect to each other.
+
+| Function | Description |
+|----------|-------------|
+| **Frequency Hop Selection** | Chooses which frequency to use next (prevents interference) |
+| **Connection Creation** | Establishes links between devices |
+| **Medium Access Control** | Manages who can transmit when |
+
+---
+
+### Piconet
+
+**What it is:**  
+A small ad hoc network created when Bluetooth devices connect together.
+
+| Component | Details |
+|-----------|---------|
+| **Definition** | Ad hoc network linking devices using Bluetooth |
+| **Master Device** | 1 device controls the network |
+| **Active Slaves** | Up to 7 devices actively communicating |
+| **Parked Slaves** | Up to 255 additional devices on standby |
+| **Channel** | All devices in a piconet use the same physical channel |
+
+**How it works:**
+1. One device becomes the **master** (controller)
+2. Up to 7 other devices become **active slaves**
+3. More devices can be **parked** (inactive but ready)
+4. Master can activate parked devices by parking an active one first
+
+| Address Type | Details |
+|--------------|---------|
+| **AM_ADDR** | Active Member Address – unique within the piconet (for active slaves) |
+
+---
+
+### Bluetooth Device Address
+
+**What it is:**  
+Every Bluetooth device has a unique 48-bit address (like a MAC address).
+
+| Part | Size | Purpose |
+|------|------|---------|
+| **48-bit Address** | Total address | Unique identifier for each Bluetooth device |
+| **LAP** (Lower Address Part) | Lower bits | Used for piconet identification, error checking, security checks<br>Assigned internally by each organization |
+| **Other Two Parts** | Upper bits | Proprietary addresses of manufacturing organizations |
+
+---
+
+### Native Clock
+
+**What it is:**  
+Every Bluetooth device has an internal clock.
+
+| Feature | Details |
+|---------|---------|
+| **Clock Size** | 28-bit |
+| **Tick Rate** | 3,200 times per second |
+| **Purpose** | Used along with device address to form and synchronize piconets |
+
+**Two Fundamental Elements for Piconet:**
+1. Device Address (48-bit)
+2. Native Clock (28-bit)
+
+[[Image showing piconet structure with master and slaves]]
+
+---
+
+## Transport Protocol Group (Contd.)
+
+### Bluetooth States
+
+**What it is:**  
+Different modes a Bluetooth device can be in during its operation.
+
+---
+
+### Standby Mode
+
+| Mode | Description |
+|------|-------------|
+| **Standby** | Initial state – all devices start here |
+| **Power** | Low power consumption |
+| **Activity** | Device is not connected to any piconet |
+
+---
+
+### Inquiry State
+
+**What it is:**  
+The process of discovering other Bluetooth devices nearby.
+
+**Why it is needed:**  
+A device needs to find out what other Bluetooth devices are around before it can connect.
+
+| Sub-state | What Happens |
+|-----------|--------------|
+| **Inquiry** | Master sends inquiry packets on different frequencies to find devices |
+| **Inquiry Scan** | Slave listens periodically for inquiry packets (when it wants to be discovered) |
+| **Inquiry Response** | Slave responds with FHS (Frequency Hopping Sequence) packet containing its address |
+
+**How it works (Simple Steps):**
+1. Device A (master) wants to find nearby devices
+2. Device A enters **inquiry state** and broadcasts inquiry packets
+3. Device B (slave) is in **inquiry scan state** listening for inquiries
+4. Device B hears the inquiry and sends back an **inquiry response** (FHS packet with its address)
+5. Device A now knows Device B exists and has its address
+
+[[State diagram of Bluetooth communication]]
+
+---
+
+## Transport Protocol Group (Contd.)
+
+### Bluetooth States (Continued)
+
+---
+
+### Link Manager Protocol (LMP)
+
+**What it is:**  
+A protocol responsible for managing power and security in Bluetooth connections.
+
+| Responsibility | Purpose |
+|----------------|---------|
+| **Power Management** | Controls power-saving modes |
+| **Security Management** | Handles authentication and encryption |
+
+---
+
+### Connection State
+
+**What it is:**  
+When devices are actively connected in a piconet.
+
+**Contains 3 Sub-states (Power Management Modes):**
+
+| Mode | Power Level | Description |
+|------|-------------|-------------|
+| **Active Mode** | Normal | • Device actively participates in piconet<br>• Master polls slaves for transmissions<br>• Power optimization: slave can sleep if master tells when it will be addressed next |
+| **Sniff Mode** | Low Power | • Slave reduces listening activity<br>• Master sends command with "sniff interval"<br>• Slave listens only at fixed intervals (not continuously) |
+| **Hold Mode** | Very Low Power | • Slave temporarily stops participating in piconet<br>• Frees capacity for other functions (scanning, paging, inquiring)<br>• Can attend another piconet |
+| **Park Mode** | Ultra Low Power | • Slave gives up its AM_ADDR (Active Member Address)<br>• Gets 8-bit Parked Member Address instead<br>• Stays synchronized but doesn't actively communicate<br>• Allows master to have more than 7 slaves total |
+
+**Why different modes:**  
+To save battery power when full communication isn't needed.
+
+---
+
+## Transport Protocol Group (Contd.)
+
+### Link Manager Protocol
+
+**What it is:**  
+Protocol that resides in the data link layer (already covered above under LMP responsibilities).
+
+---
+
+### L2CAP (Logical Link Control and Adaptation Protocol)
+
+**What it is:**  
+A protocol that sits above the baseband layer and provides services to upper layer protocols.
+
+**Why it is needed:**  
+Different applications (voice calls, file transfer, web browsing) need different types of data services. L2CAP provides these services.
+
+| Service Type | Description |
+|--------------|-------------|
+| **Connection-Oriented (SCO)** | Synchronous Connection-Oriented – for voice/audio |
+| **Connectionless (ACL)** | Asynchronous Connectionless – for data transfer |
+
+---
+
+### L2CAP Functions
+
+| Function | What it Does |
+|----------|--------------|
+| **Protocol Multiplexing** | Distinguishes between different upper layer protocols (SDP, RFCOMM, Telephony Control)<br>Gives each application its own channel |
+| **Segmentation and Reassembly (SAR)** | • **Segmentation:** Breaks large L2CAP packets into smaller Baseband packets for transmission<br>• **Reassembly:** Combines received Baseband packets back into L2CAP packets<br>• Performs integrity check |
+
+**How SAR works:**
+1. Application sends large data packet to L2CAP
+2. L2CAP breaks it into small pieces (segmentation)
+3. Small pieces sent over Bluetooth radio
+4. Receiving device's L2CAP collects pieces
+5. Pieces combined back into original packet (reassembly)
+6. Integrity check ensures nothing was corrupted
+
+---
+
+### Host Controller Interface (HCI)
+
+**What it is:**  
+A standardized interface between the Bluetooth hardware (controller) and the software (host stack).
+
+**Why it is needed:**  
+Different devices (PCs, phones, tablets) need a standard way to talk to Bluetooth chips.
+
+| Component | Example |
+|-----------|---------|
+| **Host Stack** | PC operating system or mobile phone OS |
+| **Controller** | Bluetooth IC (integrated circuit/chip) |
+
+---
+
+### HCI Transport Standards
+
+| Transport | Used In |
+|-----------|---------|
+| **USB** | PCs and laptops |
+| **UART** | Mobile phones and PDAs |
+
+---
+
+### HCI Packet Types
+
+| Packet Type | Direction | Purpose |
+|-------------|-----------|---------|
+| **Command Packets** | Host → Controller | Host controls the Bluetooth device |
+| **Event Packets** | Controller → Host | Device informs host of changes/events |
+| **Data Packets** | Both directions | Actual data transfer |
+
+---
+
+## Middleware Protocol Group
+
+### Purpose
+
+**What it is:**  
+A layer between transport protocols and applications that makes Bluetooth easier to use.
+
+**Why it is needed:**  
+Applications shouldn't have to deal with complex transport layer details. Middleware provides simple APIs (functions) for common tasks.
+
+| Component | Purpose |
+|-----------|---------|
+| **RFCOMM** | Emulates serial port communication |
+| **SDP** | Discovers what services other devices offer |
+| **TCS** | Controls telephone calls |
+| **IrDA** | Allows infrared apps to work on Bluetooth |
+
+---
+
+### RFCOMM (Radio Frequency Communication)
+
+**What it is:**  
+A protocol that makes Bluetooth act like a serial cable connection.
+
+| Feature | Details |
+|---------|---------|
+| **Purpose** | Emulates RS232 serial ports over L2CAP |
+| **Why Needed** | Many applications were designed for serial ports (COM ports)<br>RFCOMM lets them work over Bluetooth without code changes |
+| **Simultaneous Connections** | Up to 60 connections between two Bluetooth devices |
+
+**Example:**  
+Old software that sends data through COM1 can now send it over Bluetooth using RFCOMM.
+
+---
+
+### SDP (Service Discovery Protocol)
+
+**What it is:**  
+A protocol that helps devices find out what services other Bluetooth devices offer.
+
+**Why it is needed:**  
+Bluetooth devices are mobile – they come and go. A device needs to discover what services are available (printing, file transfer, audio, etc.) from nearby devices.
+
+| Feature | Purpose |
+|---------|---------|
+| **Discovery** | Finds available services on other devices |
+| **Dynamic** | Works with devices that move around |
+
+**How it works:**
+1. Your phone wants to print
+2. Uses SDP to ask nearby devices "Who can print?"
+3. Bluetooth printer responds "I can print!"
+4. Connection established
+
+---
+
+## Middleware Protocol Group (Contd.)
+
+### TCS (Telephony Control Protocol)
+
+**What it is:**  
+Protocol that controls phone calls over Bluetooth.
+
+| Function | What it Does |
+|----------|--------------|
+| **Call Control** | Sets up calls for voice and data<br>Supports Point-to-Point (P-P) and Point-to-Multipoint (P-M) calls |
+| **Group Management** | • Multiple telephone extensions<br>• Call forwarding<br>• Group calls (conference calls) |
+| **Mobility Management** | Coordinates groups of TCS devices (multiple handsets) |
+
+**Example:**  
+Managing calls between a Bluetooth headset, phone, and cordless phone base station.
+
+---
+
+### IrDA Interoperability Protocol
+
+**What it is:**  
+Allows old infrared (IrDA) applications to work on Bluetooth devices.
+
+**Why it is needed:**  
+Many older devices used infrared for communication. This protocol lets those applications work on Bluetooth without rewriting them.
+
+| Protocol | Purpose |
+|----------|---------|
+| **IrOBEX** | IrDA Object Exchange – for exchanging files/objects between devices |
+| **IrMC** | Infrared Mobile Communications – for synchronization (contacts, calendar) |
+
+---
+
+## Bluetooth Profiles
+
+### What Profiles Are
+
+**What it is:**  
+A profile is a specification that defines exactly how to use Bluetooth for a specific purpose.
+
+**Why profiles are needed:**  
+Two devices can only work together if they both support the same profile. Without profiles, a headset from Company A might not work with a phone from Company B.
+
+**Example:**  
+Both your phone and wireless headset must support the "Headset Profile" for them to work together.
+
+---
+
+### Four Groups of Bluetooth Profiles
+
+---
+
+### 1. Generic Profiles
+
+| Profile | Purpose |
+|---------|---------|
+| **Service Discovery Profile** | Enables users to access SDP<br>Finds out which services a specific device supports |
+
+---
+
+### 2. Telephony Profiles
+
+| Profile | Purpose |
+|---------|---------|
+| **Cordless Telephony Profile** | Designed for three-in-one phones (base station, cordless handset, headset) |
+| **Headset Profile** | Provides wireless connection to headset (earphones/microphones)<br>Used with computers or mobile phones |
+
+---
+
+### 3. Networking Profiles
+
+| Profile | Purpose |
+|---------|---------|
+| **General Networking** | Enables devices to connect to LAN through access points<br>OR form small wireless LAN among themselves |
+| **Dial-up Networking Profile** | Provides dial-up internet connections via Bluetooth-enabled mobile phones |
+| **FAX Profile** | Enables computers to send and receive faxes via Bluetooth-enabled mobile phone |
+
+---
+
+### 4. Serial and Object Exchange Profiles
+
+| Profile | Purpose |
+|---------|---------|
+| **Serial Port Profile** | Emulates serial ports (RS232 & USB)<br>Used for file transfer, synchronization, and other serial line applications |
+
+---
+
+## ZigBee Specifications
+
+### ZigBee Alliance
+
+**What it is:**  
+A group of companies that created the ZigBee standard.
+
+**What ZigBee is:**  
+The most popular wireless mesh networking standard for connecting sensors, instruments, and control systems.
+
+---
+
+### ZigBee Definition
+
+**What it is:**  
+A specification for communication in a Wireless Personal Area Network (WPAN), based on IEEE 802.15.4.
+
+| Feature | Details |
+|---------|---------|
+| **Standard** | IEEE 802.15.4-based specification |
+| **Power Consumption** | Very low |
+| **Transmission Distance** | 10–100 meters line-of-sight (depends on power output and environment) |
+| **Data Rate** | 250 kbit/s |
+| **Mesh Networking** | Data can hop through intermediate devices to reach distant ones |
+
+---
+
+### ZigBee Frequency Bands
+
+| Frequency Band | Region |
+|----------------|--------|
+| **2.4 to 2.4835 GHz** | Worldwide (unlicensed) |
+| **902 to 928 MHz** | Americas and Australia |
+| **868 to 868.6 MHz** | Europe |
+
+*Note: Bands are country-specific*
+
+---
+
+### ZigBee Applications
+
+| Application Area | Examples |
+|------------------|----------|
+| **Home and Office Automation** | Smart lights, thermostats, door locks |
+| **Industrial Automation** | Factory sensors, equipment monitoring |
+| **Medical Monitoring** | Patient vitals, health sensors |
+| **Low-Power Sensors** | Temperature, motion, humidity sensors |
+
+---
+
+### ZigBee Target Domain
+
+**What ZigBee is designed for:**
+
+| Characteristic | Description |
+|----------------|-------------|
+| **Low Power** | Battery-powered devices that last years |
+| **Low Duty Cycle** | Devices that transmit occasionally (not constantly) |
+| **Low Data Rate** | Don't need to send large amounts of data quickly |
+
+**Example:**  
+A temperature sensor that wakes up once every 10 minutes, sends temperature reading, then goes back to sleep.
+
+---
+
+## WIRELESS WANS AND MANS
+
+---
+
+## THE CELLULAR CONCEPT
+
+### What is the Cellular Concept?
+
+**What it is:**  
+A method for efficiently using limited radio spectrum by dividing a large area into small cells.
+
+**Why it is needed:**  
+Radio spectrum is limited. If one large tower serves an entire city, only a few users can be supported. By dividing the city into cells, the same frequencies can be reused many times.
 
 | Feature | Description |
 |---------|-------------|
-| PDU Size | Up to 64 KB |
-| Channel Types | Connection-oriented, Connectionless |
-| Flow Control | Credit-based for connection-oriented channels |
-| Error Control | Retransmission and error detection |
+| **Network Division** | Large area divided into hexagonal cells |
+| **Cell Shape** | Hexagon (covers region without overlapping or gaps) |
+| **Efficiency** | Allows frequency reuse across the network |
 
-### 2.2 RFCOMM (Radio Frequency Communication)
+[[Diagram showing hexagonal cell layout]]
 
-**What it is**: Serial port emulation protocol
+---
 
-**Purpose**: Provides serial port interface over Bluetooth (replaces RS-232)
+### Cellular Radio System Components
 
-**Characteristics:**
-- Emulates 9-pin RS-232 serial cable
-- Supports up to 60 simultaneous connections
-- Used by profiles requiring serial data transfer
+| Component | Description |
+|-----------|-------------|
+| **Base Station (BS)** | Located at center of each cell<br>Communicates with mobile terminals |
+| **Uplink Channels** | Mobile Terminals → Base Station |
+| **Downlink Channels** | Base Station → Mobile Terminals |
+| **Mobile Terminals (MT)** | Phones, tablets, mobile devices |
 
-### 2.3 SDP (Service Discovery Protocol)
+---
 
-**Purpose**: Allows devices to discover available services on other Bluetooth devices
+### Frequency Reuse
+
+**What it is:**  
+Using the same frequency in different locations that are far enough apart that they don't interfere with each other.
+
+**Why it is important:**  
+This is the key to cellular efficiency – frequencies can be used multiple times across a city instead of just once.
+
+---
+
+### Cluster
+
+**What it is:**  
+A group of cells that together use the entire available radio spectrum.
+
+| Term | Definition |
+|------|------------|
+| **Cluster** | Group of cells using entire spectrum |
+| **Cluster Size (N)** | Number of cells in each cluster |
+| **Frequency Reuse Rule** | No two cells within the same cluster use the same frequency |
+| **Reuse Distance (D)** | Minimum distance between cells using same frequency |
+| **Formula** | N = i² + j² + ij |
 
 **How it works:**
-1. Client sends service search request
-2. Server responds with list of matching services
-3. Client can request detailed service attributes
-4. Connection established to desired service
+1. Available spectrum is divided among N cells in a cluster
+2. Each cell gets 1/N of the total spectrum
+3. After one cluster, the pattern repeats
+4. Same frequencies reused in next cluster (far enough away)
+
+[[Diagram showing cluster pattern with frequency reuse]]
 
 ---
 
-## 3. ZigBee Technology
+## THE CELLULAR CONCEPT (Contd.)
 
-### 3.1 Overview
-- **What it is**: Low-power, low-data-rate wireless standard for IoT and sensor networks
-- **Standard**: IEEE 802.15.4
-- **Purpose**: Home automation, industrial control, wireless sensor networks
-- **Key Feature**: Very low power consumption (battery life: months to years)
-
-### 3.2 ZigBee Specifications
-
-| Parameter | Specification |
-|-----------|---------------|
-| Frequency Bands | 2.4 GHz (global), 915 MHz (Americas), 868 MHz (Europe) |
-| Data Rate | 250 kbps (2.4 GHz), 40 kbps (915 MHz), 20 kbps (868 MHz) |
-| Range | 10-100 meters |
-| Network Size | Up to 65,000 nodes |
-| Topology | Star, Tree, Mesh |
-| Power Consumption | Very low (microamps in sleep mode) |
-| Modulation | DSSS (Direct Sequence Spread Spectrum) |
-
-### 3.3 ZigBee Device Types
-
-| Device Type | Role | Characteristics |
-|-------------|------|-----------------|
-| **ZigBee Coordinator (ZC)** | Network initiator and manager | One per network, always powered, stores network info |
-| **ZigBee Router (ZR)** | Route discovery and message forwarding | Always powered, extends network range |
-| **ZigBee End Device (ZED)** | Sensor/actuator node | Can sleep, battery-powered, lowest power consumption |
-
-### 3.4 ZigBee Network Topologies
-
-| Topology | Description | Use Case |
-|----------|-------------|----------|
-| **Star** | All devices connect to central coordinator | Simple home automation |
-| **Tree** | Hierarchical structure with routers extending network | Building automation |
-| **Mesh** | Devices interconnected with multiple paths | Industrial, large-scale deployments |
-
-[[ZigBee network topologies diagram showing star, tree, and mesh configurations]]
-
-### 3.5 ZigBee vs Bluetooth Comparison
-
-| Feature | ZigBee | Bluetooth |
-|---------|--------|-----------|
-| Data Rate | 20-250 kbps | 1-3 Mbps |
-| Range | 10-100m | 1-100m |
-| Power Consumption | Very Low | Low to Medium |
-| Network Size | 65,000 nodes | 8 active devices per piconet |
-| Topology | Star, Tree, Mesh | Piconet, Scatternet |
-| Application | IoT, Sensors, Automation | Audio, File transfer, Peripherals |
-| Complexity | Simple | More complex |
-| Cost | Lower | Higher |
+### Issues in Cellular Systems
 
 ---
 
-## 4. Wireless WANs and MANs
+### 1. Co-channel Interference
 
-### 4.1 The Cellular Concept
+**What it is:**  
+Interference from cells in different clusters using the same frequency.
 
-**What it is**: Method of dividing a geographic area into smaller regions called cells, each served by a base station
+| Aspect | Details |
+|--------|---------|
+| **Cause** | Using same frequencies in different clusters |
+| **Solution** | Reuse distance D must be large enough to keep interference low |
+| **Requirement** | Distance between cells with same frequency must not let interference affect signal strength |
 
-**Why it's needed:**
-- Limited radio spectrum available
-- Need to support large number of users
-- Maximize spectrum utilization through frequency reuse
+---
 
-**Key Principle**: Same frequencies can be reused in non-adjacent cells (frequency reuse)
+### 2. Adjacent Channel Interference
 
-#### Cellular Concept Benefits
+**What it is:**  
+Interference from nearby frequencies within the same cluster.
 
-| Benefit | Explanation |
-|---------|-------------|
-| **Increased Capacity** | Frequency reuse allows serving more users with same spectrum |
-| **Limited Transmit Power** | Smaller cells require less power, reduces interference |
-| **Scalability** | Network can grow by adding more cells |
-| **Better Coverage** | Smaller cells provide more uniform coverage |
+| Aspect | Details |
+|--------|---------|
+| **Cause** | Using adjacent frequencies (like 880 MHz and 881 MHz) in nearby cells |
+| **Solution** | Channel assignment within cluster must minimize assigning neighboring frequencies to same cell |
 
-[[Cellular network diagram showing hexagonal cell layout with frequency reuse pattern]]
+---
 
-### 4.2 Cellular Architecture
+### Advantage of Cellular Concept
 
-#### Components
-
-**1. Mobile Station (MS)**
-- User device (phone, modem)
-- Contains subscriber identity (SIM card)
-- Communicates with base station
-
-**2. Base Station Subsystem (BSS)**
-- **Base Transceiver Station (BTS)**: Radio equipment, antennas
-- **Base Station Controller (BSC)**: Controls multiple BTSs, manages handoffs
-
-**3. Network Switching Subsystem (NSS)**
-- **Mobile Switching Center (MSC)**: Switching and routing calls
-- **Home Location Register (HLR)**: Database of subscriber information
-- **Visitor Location Register (VLR)**: Temporary database for roaming users
-- **Authentication Center (AUC)**: Security and authentication
-
-**4. Operation and Support Subsystem (OSS)**
-- Network management and monitoring
-
-[[Cellular architecture diagram showing MS, BTS, BSC, MSC, HLR, VLR components and their connections]]
-
-### 4.3 Cell Shapes and Cluster Concept
-
-#### Hexagonal Cell Layout
-- **Why hexagonal?** Provides better coverage with no gaps or overlaps compared to circles or squares
-- **Cell radius**: Distance from base station to cell edge
-
-#### Cluster
-- **What it is**: Group of cells using entire set of available frequencies
-- **Cluster size (N)**: Number of cells in a cluster
-- **Common values**: N = 3, 4, 7, 12, 21
-
-**Frequency Reuse Distance (D)**: Minimum distance between centers of cells using same frequencies
-
-**Relationship**: D = R√(3N)
-- D = reuse distance
-- R = cell radius
-- N = cluster size
-
-| Cluster Size (N) | Co-channel Interference | Capacity per Cluster |
-|------------------|-------------------------|---------------------|
-| 3 | Higher | Lower |
-| 7 | Moderate | Moderate |
-| 12 | Lower | Higher |
-
-[[Hexagonal cell cluster diagram showing N=7 cluster pattern with frequency groups]]
-
-### 4.4 Capacity Enhancement Techniques
-
-#### 1. Cell Splitting
-- **What**: Dividing large cells into smaller cells
-- **How**: Replace single base station with multiple lower-power base stations
-- **Result**: Increased capacity by allowing more frequency reuse
-- **Consideration**: Smaller cells require more base stations (higher cost)
-
-#### 2. Cell Sectoring
-- **What**: Dividing a cell into sectors using directional antennas
-- **Typical configuration**: 3 or 6 sectors per cell (120° or 60° antennas)
-- **Result**: Reduces co-channel interference, increases capacity
-- **Advantage**: Less expensive than cell splitting
-
-#### 3. Microcells and Picocells
-- **Microcells**: Very small cells for high-traffic areas (shopping malls, stadiums)
-- **Picocells**: Indoor cells for buildings
-- **Purpose**: Provide additional capacity in hotspots
-
-[[Cell splitting diagram showing large cell divided into smaller cells]]
-
-[[Cell sectoring diagram showing cell divided into 3 sectors with 120° directional antennas]]
-
-### 4.5 Capacity Calculation
-
-**Basic Formula:**
-```
-Total Users = (Total Bandwidth / Bandwidth per User) × Number of Cells
-```
-
-**For Cellular System:**
-```
-Users per Cell = Total Bandwidth / (Bandwidth per User × Cluster Size)
-Total Users in City = Users per Cell × Total Number of Cells
-```
+**Why cellular is better than single large cell:**
 
 **Example Calculation:**
-- Bandwidth: 25 MHz = 25,000 kHz
-- Per user: 30 kHz
-- Single city-wide cell: 25,000 / 30 = 833 users
 
-**With Cellular Concept:**
-- Cluster size (N): 7
-- Channels per cell: 833 / 7 ≈ 119 channels
-- Total cells in city: 20
-- Total users: 119 × 20 = 2,380 users
+| Scenario | Users Supported | Calculation |
+|----------|----------------|-------------|
+| **Single Large Cell** | 833 users | • Spectrum: 25 MHz = 25,000 KHz<br>• Per user: 30 KHz<br>• Users: 25,000 ÷ 30 = 833 |
+| **Cellular System (7-cell clusters)** | 2,380 users | • Per cell spectrum: 25,000 ÷ 7 KHz<br>• Users per cell: (25,000 ÷ 7) ÷ 30 = 119<br>• Total cells: 20<br>• Total users: 119 × 20 = 2,380 |
 
-**Efficiency Improvement**: 2,380 / 833 = 2.86× more users supported
+**Result:** Cellular system supports **~3 times more users** than single cell!
 
 ---
 
-## 5. Channel Allocation Algorithms
+### General Formula
 
-### 5.1 Fixed Channel Allocation (FCA)
+| Variable | Meaning |
+|----------|---------|
+| **S** | Total spectrum bandwidth |
+| **W** | Bandwidth per user |
+| **N** | Cluster size |
+| **k** | Number of cells to cover area |
+| **n** | Number of users supported |
 
-**What it is**: Each cell is permanently allocated a set of channels
+**Formula:**  
+n = (S ÷ N ÷ W) × k
 
-**Characteristics:**
-- Simple to implement
-- No real-time channel management needed
-- Channels cannot be borrowed by neighboring cells
+---
 
-**Advantages:**
-- Simple, predictable
-- No computational overhead
-- No signaling overhead
+## CELLULAR Capacity Enhancement
 
-**Disadvantages:**
-- Inefficient spectrum utilization
-- Cannot adapt to traffic variations
-- Blocked calls even when channels free in other cells
+### Why Capacity Enhancement is Needed
 
-### 5.2 Dynamic Channel Allocation (DCA)
+**Reasons for reduced capacity:**
+- Limited frequency reuse due to strict clustering
+- Growing number of users
+- Increased data usage
 
-**What it is**: Channels allocated to cells dynamically based on demand
+---
+
+### Methods to Improve Capacity
+
+---
+
+### 1. Cell Splitting
+
+**What it is:**  
+Dividing a congested (overcrowded) cell into smaller cells.
+
+| Aspect | Details |
+|--------|---------|
+| **Process** | Subdivide large cell into multiple smaller cells |
+| **Each New Cell Has** | • Own base station<br>• Reduced antenna height<br>• Lower transmitter power |
+| **Why it Works** | Increases capacity by increasing number of times channels are reused |
 
 **How it works:**
-1. No fixed channel assignment to cells
-2. When call arrives, system searches for available channel
-3. Channel assigned temporarily for call duration
-4. After call ends, channel returned to pool
+1. Cell becomes overcrowded
+2. Split into 4 smaller cells
+3. Each small cell now reuses frequencies
+4. Total capacity = 4× original
 
-**Advantages:**
-- Better spectrum utilization
-- Adapts to traffic patterns
-- Reduced blocking probability
-- Handles non-uniform traffic well
-
-**Disadvantages:**
-- Complex implementation
-- Requires centralized or distributed control
-- Higher computational overhead
-- Increased signaling
-
-### 5.3 Hybrid Channel Allocation
-
-**What it is**: Combination of FCA and DCA
-
-**How it works:**
-- Some channels permanently assigned (FCA)
-- Some channels kept in dynamic pool (DCA)
-- Cells borrow from dynamic pool during high traffic
-
-**Advantages:**
-- Balances simplicity and efficiency
-- Provides guaranteed capacity (fixed channels)
-- Handles traffic peaks (dynamic channels)
-
-| Allocation Type | Flexibility | Complexity | Efficiency | Best For |
-|-----------------|-------------|------------|------------|----------|
-| **FCA** | Low | Low | Low | Uniform traffic |
-| **DCA** | High | High | High | Variable traffic |
-| **Hybrid** | Medium | Medium | Medium | Mixed scenarios |
+[[Diagram showing cell splitting process]]
 
 ---
 
-## 6. Handoff (Handover) Process
+### 2. Cell Layering (Micro-cells and Pico-cells)
 
-### 6.1 What is Handoff?
+**What it is:**  
+Adding different sized cell layers on top of existing cells.
 
-**Definition**: Process of transferring an ongoing call from one cell/channel to another as mobile moves
+| Cell Type | Size | Purpose |
+|-----------|------|---------|
+| **Macro-cells** | Tens of kilometers | Original large cells for high-mobility users |
+| **Micro-cells** | Less than 1 km radius | Smaller layer for low-mobility users |
+| **Pico-cells** | Few meters radius | Very small cells for indoor areas |
 
-**Why needed:**
-- Mobile moves between cells during call
-- Signal strength decreases in current cell
-- Maintain call continuity
-
-### 6.2 Types of Handoff
-
-#### Based on Initiation:
-
-**1. Mobile-Initiated Handoff**
-
-**Process:**
-1. Mobile station continuously monitors signal strength from serving and neighboring base stations
-2. Mobile measures received signal strength (RSS) from multiple base stations
-3. When neighboring cell's signal becomes stronger than current cell (by threshold), mobile initiates handoff
-4. Mobile reports measurements to network
-5. Network evaluates and executes handoff if appropriate
-
-**Characteristics:**
-- Mobile has control over handoff decision
-- Faster handoff initiation
-- Mobile must have capability to measure multiple channels simultaneously
-- Used in IS-95 (CDMA) systems
-
-**Advantages:**
-- Quick response to signal degradation
-- Mobile has better knowledge of channel quality
-- Reduced network overhead
-
-**Disadvantages:**
-- Requires sophisticated mobile hardware
-- Mobile may not consider network load
-
-**2. Network-Initiated Handoff**
-
-**Process:**
-1. Base stations continuously monitor signal strength from all mobiles in their cells
-2. Base station measures uplink signal quality
-3. When signal drops below threshold, base station reports to MSC
-4. MSC requests measurements from neighboring base stations
-5. MSC decides and executes handoff
-
-**Characteristics:**
-- Network has control over handoff decision
-- Used in GSM systems
-- Network can consider multiple factors (signal, interference, load)
-
-**Advantages:**
-- Network considers system-wide optimization
-- Can balance load across cells
-- Simpler mobile hardware
-
-**Disadvantages:**
-- Slower response time
-- Higher signaling overhead
-- Network may not detect degradation as quickly as mobile
-
-#### Handoff Decision Parameters:
-
-| Parameter | Mobile-Initiated | Network-Initiated |
-|-----------|------------------|-------------------|
-| **Control** | Mobile decides | Network decides |
-| **Measurements** | Mobile measures | Base stations measure |
-| **Response Time** | Faster | Slower |
-| **Load Balancing** | Not considered | Can be optimized |
-| **Mobile Complexity** | Higher | Lower |
-| **Signaling** | Lower | Higher |
-| **Used In** | CDMA (IS-95) | GSM, TDMA |
-
-### 6.3 Handoff Types by Technology
-
-**Hard Handoff (Break-before-make)**
-- Connection to old cell broken before connection to new cell established
-- Brief interruption in service
-- Used in FDMA, TDMA systems
-
-**Soft Handoff (Make-before-break)**
-- Mobile connected to multiple base stations simultaneously
-- No interruption in service
-- Used in CDMA systems
-- Improves reliability but uses more resources
-
-[[Handoff process diagram showing mobile moving between cells with signal strength measurements]]
+**Why it works:**
+- Fast-moving users (cars) use macro-cells
+- Slow-moving users (walking) use micro-cells  
+- Indoor users use pico-cells
+- Each layer can reuse frequencies
 
 ---
 
-## 7. Key Performance Metrics
+## CELLULAR Capacity Enhancement (Contd.)
 
-### 7.1 Capacity Metrics
+### 3. Sectorization
 
-| Metric | Formula | Meaning |
-|--------|---------|---------|
-| **Channels per Cell** | Total Channels / Cluster Size (N) | Frequency channels available per cell |
-| **Users per Cell** | Total Bandwidth / (BW per User × N) | Maximum simultaneous users per cell |
-| **System Capacity** | Users per Cell × Total Cells | Total users supported in network |
+**What it is:**  
+Dividing a cell into sectors (pie slices) using directional antennas instead of one omnidirectional antenna.
 
-### 7.2 Coverage and Quality Metrics
+| Component | Traditional | With Sectorization |
+|-----------|-------------|-------------------|
+| **Antenna at BS** | 1 omni-directional (360°) | Multiple directional antennas |
+| **Coverage** | Full circle | Divided into sectors |
 
-| Metric | Description |
+---
+
+### How Sectorization Works
+
+**Concept:**  
+Uses Space Division Multiple Access (SDMA) to reuse channels within shorter distances.
+
+| Configuration | Description |
+|---------------|-------------|
+| **3-Sector** | Cell divided into three 120° sectors |
+| **6-Sector** | Cell divided into six 60° sectors |
+
+**Benefits:**
+- Decreases co-channel interference
+- Increases system performance
+- Channels can be reused at shorter distances
+
+**How it reduces interference:**
+- Directional antennas only transmit/receive in their sector
+- Signals from other directions are blocked
+- Same frequency can be used closer together
+
+[[Sectorization diagram showing 3-sector and 6-sector cells]]
+
+---
+
+## Channel Allocation Algorithms
+
+### Purpose
+
+**What it is:**  
+Methods for assigning radio channels to cells to maximize the number of successful calls.
+
+**Why it is important:**  
+Efficient channel allocation greatly improves network throughput (number of calls supported).
+
+---
+
+### 1. Fixed Channel Allocation
+
+**What it is:**  
+Each cell is permanently assigned a fixed set of channels.
+
+| Feature | Description |
+|---------|-------------|
+| **Channel Assignment** | Fixed set of channels per cell (determined in advance) |
+| **Borrowing** | Cells may borrow channels from neighbors temporarily |
+| **Constraint** | Borrowing must not violate minimum reuse distance |
+| **Channel Locking** | Prevents identical frequencies from being too close |
+
+---
+
+### Disadvantage of Fixed Allocation
+
+| Problem | Description |
+|---------|-------------|
+| **Unpredictable Demand** | Real-world call demand is very unpredictable |
+| **Imbalance** | Some cells have too many channels (wasted)<br>Other cells have too few channels (calls blocked) |
+| **Inefficiency** | Cannot adapt to changing traffic patterns |
+
+---
+
+### 2. Dynamic Channel Allocation
+
+**What it is:**  
+Channels are not pre-assigned to cells. Assignment happens on-demand when a call is requested.
+
+| Feature | Description |
+|---------|-------------|
+| **No Local Channels** | Cells don't have permanently assigned channels |
+| **Decision Making** | Channel allocation decided dynamically when needed |
+| **Flexibility** | Extremely flexible, handles large demand variations |
+| **Process** | Base stations check local interference and choose suitable channel |
+
+---
+
+### Advantage of Dynamic Allocation
+
+| Benefit | Description |
+|---------|-------------|
+| **Adaptability** | Handles unpredictable, varying demand |
+| **Efficiency** | Maximizes bandwidth utilization |
+
+---
+
+### Disadvantage of Dynamic Allocation
+
+| Problem | Description |
+|---------|-------------|
+| **Computation** | Requires a lot of computation |
+| **Complexity** | More complex to implement |
+
+---
+
+### 3. Hybrid Channel Allocation
+
+**What it is:**  
+A compromise between fixed and dynamic allocation.
+
+| Feature | Description |
+|---------|-------------|
+| **Two Sets of Channels** | Each cell gets two types of channels |
+| **Local Channels** | Fixed set assigned permanently (like fixed allocation) |
+| **Borrowable Channels** | Pool of channels that can be borrowed (like dynamic allocation) |
+| **Borrowing Rule** | Borrowing allowed only from the borrowable set |
+
+---
+
+### Comparison of Allocation Schemes
+
+| Scheme | Complexity | Efficiency | Flexibility |
+|--------|------------|------------|-------------|
+| **Fixed** | Low | Low | Low |
+| **Dynamic** | High | High | High |
+| **Hybrid** | Medium | Medium | Medium |
+
+---
+
+## Handoffs
+
+### What is a Handoff?
+
+**What it is:**  
+The process of transferring an ongoing call from one base station to another as the user moves.
+
+**Why it is needed:**  
+When you move from the coverage area of one base station to another, the call must be transferred without dropping.
+
+---
+
+### Two Phases of Handoff
+
+| Phase | Description |
+|-------|-------------|
+| **1. Finding New Channel** | Locate a new uplink-downlink channel pair in the next cell |
+| **2. Dropping Old Link** | Release the channel from the previous base station |
+
+---
+
+## Handoffs (Issues in Handoffs)
+
+### 1. Optimal BS Selection
+
+**Problem:**  
+At cell boundaries, it's difficult to decide which base station should serve the mobile terminal.
+
+**Why it's difficult:**
+- Signal strength from multiple BSs may be similar
+- Signals fluctuate
+- Wrong choice can cause poor quality or dropped calls
+
+---
+
+### 2. The Ping-Pong Effect
+
+**What it is:**  
+Frequent back-and-forth handoffs between two base stations.
+
+**Causes:**
+
+| Cause | Description |
+|-------|-------------|
+| **Frequent Movement** | User moves back and forth across cell boundary |
+| **Signal Fluctuation** | Signal strength fluctuates at boundary |
+
+**Problem:**  
+Wastes resources, degrades service quality
+
+---
+
+### 3. Detection of Handoff Requirement
+
+**Three Methods:**
+
+| Method | How It Works | Who Decides |
+|--------|--------------|-------------|
+| **Mobile-Initiated** | • MT monitors signal strength from BS<br>• Requests handoff when signal drops below threshold | Mobile Terminal |
+| **Network-Initiated** | • BS monitors signals from MT<br>• BS checks with neighboring BSs about signal strength<br>• BS decides which cell should take the MT | Base Station |
+| **Mobile-Assisted** | • MT monitors and reports signal strength<br>• BS makes final handoff decision | Combination |
+
+---
+
+## Handoffs (Issues in Handoffs) - Contd.
+
+### 4. Handoff Delay
+
+**What it is:**  
+The time taken to transfer a call from current cell to new cell.
+
+| Problem | Consequence |
+|---------|-------------|
+| **Too Large Delay** | Signal may fall below minimum C/I (Carrier to Interference ratio) |
+| **Result** | Call gets dropped |
+| **Goal** | Minimize handoff delay |
+
+*C/I = Carrier to Interference ratio – measure of signal quality*
+
+---
+
+### 5. Duration of Interruption
+
+**What it is:**  
+The gap in communication when switching from old channel to new channel.
+
+**Process:**
+1. Old channel pair from current BS is canceled
+2. Brief interruption
+3. New channel pair from next BS is activated
+
+| Impact | Description |
 |--------|-------------|
-| **Cell Radius (R)** | Distance from base station to cell edge |
-| **Reuse Distance (D)** | D = R√(3N), minimum distance for frequency reuse |
-| **Co-channel Reuse Ratio** | D/R = √(3N), larger ratio = less interference |
-| **Signal-to-Interference Ratio (SIR)** | Measure of signal quality relative to interference |
+| **Voice Calls** | Brief silence (noticeable but tolerable) |
+| **Data Transmission** | Can cause packet loss, retransmission needed |
+| **Goal** | Minimize interruption duration |
 
 ---
 
-## Summary: Efficiency of Cellular Concept
+### 6. Handoff Success
 
-**Why Cellular Concept is Efficient:**
+**What it is:**  
+The probability that a handoff completes successfully when a user crosses a cell boundary.
 
-1. **Frequency Reuse**: Same frequencies used in non-adjacent cells multiplies capacity
-2. **Scalability**: Easy to add cells to increase capacity
-3. **Lower Power**: Smaller cells need less transmit power
-4. **Flexible**: Can adapt to traffic patterns through cell splitting/sectoring
-5. **Better Coverage**: Smaller cells provide more uniform signal strength
+**Depends on:**
 
-**Trade-off**: More infrastructure cost vs. much higher capacity and spectrum efficiency
-
-**Quantitative Benefit**: With cluster size N=7 and proper planning, can support N times more users compared to single large cell covering same area.
+| Factor | Description |
+|--------|-------------|
+| **Available Channels** | Number of free channel pairs in adjacent cells |
+| **Switching Capacity** | Ability to switch before signal falls below acceptable

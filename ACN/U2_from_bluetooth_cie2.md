@@ -591,7 +591,7 @@ Radio spectrum is limited. If one large tower serves an entire city, only a few 
 | **Cell Shape** | Hexagon (covers region without overlapping or gaps) |
 | **Efficiency** | Allows frequency reuse across the network |
 
-[[Diagram showing hexagonal cell layout]]
+<img width="361" height="217" alt="image" src="https://github.com/user-attachments/assets/c10045eb-15eb-48b4-922d-0adf15afddc7" />
 
 ---
 
@@ -635,7 +635,7 @@ A group of cells that together use the entire available radio spectrum.
 3. After one cluster, the pattern repeats
 4. Same frequencies reused in next cluster (far enough away)
 
-[[Diagram showing cluster pattern with frequency reuse]]
+<img width="292" height="171" alt="image" src="https://github.com/user-attachments/assets/debb4341-2a53-485c-a923-b1509e4df0ac" />
 
 ---
 
@@ -732,7 +732,7 @@ Dividing a congested (overcrowded) cell into smaller cells.
 3. Each small cell now reuses frequencies
 4. Total capacity = 4× original
 
-[[Diagram showing cell splitting process]]
+<img width="415" height="240" alt="image" src="https://github.com/user-attachments/assets/dce246a8-af65-4e32-89e4-94603bc69992" />
 
 ---
 

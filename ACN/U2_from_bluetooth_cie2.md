@@ -214,6 +214,9 @@ Different modes a Bluetooth device can be in during its operation.
 
 ---
 
+<img width="333" height="273" alt="image" src="https://github.com/user-attachments/assets/9287ef2c-f3d5-4d29-8c9d-bbc5d9c9f0d7" />
+
+
 ### Standby Mode
 
 | Mode | Description |
@@ -245,7 +248,6 @@ A device needs to find out what other Bluetooth devices are around before it can
 4. Device B hears the inquiry and sends back an **inquiry response** (FHS packet with its address)
 5. Device A now knows Device B exists and has its address
 
-[[State diagram of Bluetooth communication]]
 
 ---
 

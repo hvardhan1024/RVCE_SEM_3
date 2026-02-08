@@ -2512,23 +2512,8 @@ undefined
 
 **Event-Driven Flow:**
 
-mermaid
+<img width="1120" height="464" alt="image" src="https://github.com/user-attachments/assets/29bd563a-5c63-414f-8b59-d2020283b991" />
 
-```mermaid
-sequenceDiagram
-    participant App as Application
-    participant EL as Event Loop
-    participant Handler as Event Handler
-    participant Async as Async Operation
-    
-    App->>EL: Register Event Handler
-    EL->>EL: Monitor Events
-    Async->>EL: Event Occurs
-    EL->>Handler: Trigger Handler
-    Handler->>Handler: Execute Logic
-    Handler->>EL: Complete
-    EL->>EL: Continue Monitoring
-```
 
 **Example:**
 

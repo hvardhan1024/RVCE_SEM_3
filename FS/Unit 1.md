@@ -76,18 +76,19 @@ graph TD
 
 **MVC (Model-View-Controller)** is a software design pattern that separates application logic into three interconnected components.
 
-mermaid
-
-````mermaid
+```mermaid
 graph LR
-    A[User/Browser] --> B[Controller]
+    A[User/Browser] --> E[View]
+    E --> B[Controller]
     B --> C[Model]
     C --> D[Database]
     D --> C
     C --> B
-    B --> E[View]
+    B --> E
     E --> A
 ```
+
+
 
 ### MVC Components
 
@@ -120,7 +121,7 @@ graph LR
    - Improved productivity
 
 **Typical MERN Folder Structure:**
-```
+
 project-root/
 ├── client/              # React front-end
 │   ├── public/
@@ -135,7 +136,7 @@ project-root/
 │   ├── middleware/      # Custom middleware
 │   └── server.js
 └── package.json
-````
+
 
 ---
 

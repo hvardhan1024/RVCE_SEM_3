@@ -10,12 +10,12 @@
 
 **Key points:**
 
-- ⭐ Client-side routing swaps components while keeping the page loaded.
-- URL changes are handled by routing library (e.g., `react-router-dom`).
-- Benefits: fast navigation, smooth UX, no full reload.
-- **Hash-based routing** uses `#` portion; server never receives it.
-- **Browser History (HTML5 History API)** uses `pushState`/`replaceState` to change URL without reload.
-- ⚠️ History API routes require server support to serve the SPA for all routes.
+- ⭐ Modern SPAs use **client-side routing** (URL changes handled by JavaScript).
+- A routing library (e.g., `react-router-dom`) maps URLs to components.
+- Benefits: faster navigation, better UX, no full page reload.
+- **Hash-based routing (`#`)**: browser never sends hash to server; JS listens for hash changes.
+- **History API routing**: uses `pushState` / `replaceState` for clean URLs.
+- ⚠️ History API requires backend to return SPA entry for all routes.
 
 **Important terms / keywords:**
 
@@ -24,7 +24,17 @@
 **Example (URL patterns):**
 
 - Hash: `https://example.com/#/products/42`
-- History: `https://example.com/products/42`
+- History API: `https://example.com/products/42`
+
+**Server-side vs Client-side routing (exam contrast):**
+
+| Feature        | Server-Side Routing                     | Client-Side Routing                   |
+| -------------- | --------------------------------------- | ------------------------------------- |
+| Mechanism      | Each navigation requests server         | JS intercepts and swaps components    |
+| Performance    | Faster initial load, slower transitions | Slower initial load, fast transitions |
+| SEO            | Excellent (pre-rendered HTML)           | Limited unless pre-rendered           |
+| Resource usage | Higher server load                      | Lower server load                     |
+| Best for       | Static sites, SEO-heavy pages           | Web apps, dashboards                  |
 
 ---
 
@@ -34,7 +44,7 @@
 
 **Key points:**
 
-- `<Routes>` groups route definitions.
+- `<Routes>` is the container for route definitions.
 - `<Route path="/" element={...} />` maps a path to a component.
 - `path="*"` handles invalid routes (404).
 
@@ -42,11 +52,21 @@
 
 - Routes, Route, path, element, wildcard route
 
-**Example (minimal):**
+**Minimal example:**
 
-- `/` → list page
-- `/issues` → list page
-- `*` → not found page
+```jsx
+import { Routes, Route } from "react-router-dom"
+import { IssueList } from "./IssueList"
+import { NotFound } from "./NotFound"
+
+export const PageRouter = () => (
+  <Routes>
+    <Route path="/" element={<IssueList />} />
+    <Route path="/issues" element={<IssueList />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+)
+```
 
 ---
 
@@ -58,40 +78,64 @@
 
 - `:id` declares a route parameter.
 - `useParams()` reads parameters from URL.
-- Used for single resource views like edit/detail pages.
+- Used for detail/edit pages of a single resource.
 
 **Important terms / keywords:**
 
 - Route params, dynamic segments, `useParams`
 
-**Example (URL):**
+**Minimal example:**
 
-- `/issues/12345` where `id = 12345`
+```jsx
+// URL: /issues/12345
+import { useParams } from "react-router-dom"
+
+export const IssueDetail = () => {
+  const { id } = useParams()
+  return <h2>Displaying details for Issue ID: {id}</h2>
+}
+
+// Route:
+;<Route path="/issues/:id" element={<IssueDetail />} />
+```
 
 ---
 
 ## 4) Route Query String
 
-**Definition:** Optional key-value data appended to the URL for filtering or searching.
+**Definition:** Optional key-value data appended to the URL for filtering/searching.
 
 **Key points:**
 
 - Format: `?key=value` pairs.
-- Read using `useSearchParams()`.
-- Typically used for filters (status, sort, search).
+- `useSearchParams()` reads query values.
+- Used for filters such as status, sort, search.
 
 **Important terms / keywords:**
 
 - Query string, query params, `useSearchParams`
 
-**Example (URL):**
+**Minimal example:**
 
-- `/issues?status=Open`
+```jsx
+// URL: /issues?status=Open
+import { useSearchParams } from "react-router-dom"
 
-**Route Params vs Query Params (Quick Contrast):**
+export const IssueList = () => {
+  const [searchParams] = useSearchParams()
+  const status = searchParams.get("status") || "All"
+  return <div>Showing {status} Issues</div>
+}
+```
 
-- **Route Params:** Mandatory, identify a single resource (`/issues/123`).
-- **Query Params:** Optional, modify view (`/issues?status=Open`).
+**Route Params vs Query Params (table):**
+
+| Feature     | Route Parameters         | Query Params              |
+| ----------- | ------------------------ | ------------------------- |
+| Requirement | Mandatory; part of path  | Optional; appended string |
+| Primary use | Identify single resource | Filter / sort / search    |
+| Syntax      | `/issues/123`            | `/issues?status=Open`     |
+| Structure   | Hierarchical path        | Modifies view/response    |
 
 ---
 
@@ -102,16 +146,29 @@
 **Key points:**
 
 - `useNavigate()` provides `navigate()`.
-- ⭐ `navigate('/path')` **adds** a history entry.
-- ⭐ `navigate('/path', { replace: true })` **replaces** current entry.
+- ⭐ `navigate('/path')` adds a history entry.
+- ⭐ `navigate('/path', { replace: true })` replaces current entry.
 
 **Important terms / keywords:**
 
 - Programmatic navigation, `useNavigate`, replace
 
-**Example (use case):**
+**Minimal example:**
 
-- Redirect to list page after creating an issue.
+```jsx
+import { useNavigate } from "react-router-dom"
+
+export const IssueAdd = () => {
+  const navigate = useNavigate()
+
+  const createIssue = () => {
+    // ... save issue ...
+    navigate("/issues")
+  }
+
+  return <button onClick={createIssue}>Add Issue</button>
+}
+```
 
 ---
 
@@ -121,17 +178,34 @@
 
 **Key points:**
 
-- Shared layout contains header/sidebar.
-- `<Outlet />` is the placeholder for child routes.
+- Layout includes header/sidebar common to pages.
+- `<Outlet />` is where child route content appears.
 
 **Important terms / keywords:**
 
 - Nested routes, layout route, `Outlet`
 
-**Example (concept):**
+**Minimal example:**
 
-- Parent: `/` → layout
-- Child: `/issues` → renders inside layout
+```jsx
+import { Outlet } from "react-router-dom"
+
+export const AppLayout = () => (
+  <div className="grid-container">
+    <header>
+      <h1>Issue Tracker</h1>
+    </header>
+    <nav>Sidebar Navigation</nav>
+    <main>
+      <Outlet />
+    </main>
+  </div>
+)
+
+// <Route path="/" element={<AppLayout />}>
+//   <Route path="issues" element={<IssueList />} />
+// </Route>
+```
 
 ---
 
@@ -149,21 +223,67 @@
 
 - History stack, push, replace
 
+**Minimal example:**
+
+```jsx
+const navigate = useNavigate()
+// Standard navigation
+navigate("/issues")
+// Replace history
+navigate("/login", { replace: true })
+```
+
 ---
 
 ## 8) Forms
 
-**Definition:** UI for collecting user input, typically handled using controlled components.
+**Definition:** UI for collecting user input using controlled components.
 
 **Key points:**
 
-- Controlled components: input value stored in React state.
+- Controlled components store input values in React state.
 - `onChange` updates state; `onSubmit` handles form action.
-- Prevent default form submit to avoid page reload.
+- `e.preventDefault()` avoids page reload.
 
 **Important terms / keywords:**
 
 - Controlled component, state, `onChange`, `onSubmit`
+
+**Minimal example:**
+
+```jsx
+import { useState } from "react"
+
+export const IssueAdd = ({ createIssue }) => {
+  const [title, setTitle] = useState("")
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    createIssue({ title, status: "New" })
+    setTitle("")
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Issue Title"
+      />
+      <button type="submit">Add</button>
+    </form>
+  )
+}
+```
+
+**Controlled vs Uncontrolled (table):**
+
+| Feature          | Controlled         | Uncontrolled        |
+| ---------------- | ------------------ | ------------------- |
+| State management | React state        | DOM handles value   |
+| Data flow        | `onChange` + state | Refs to read values |
+| Validation       | Real-time          | Usually on submit   |
+| Initial value    | `value` prop       | `defaultValue` prop |
 
 **Common Mistake:**
 
@@ -177,13 +297,36 @@
 
 **Key points:**
 
-- Updates URL with selected filter (e.g., status).
-- Can use `navigate()` to change query string.
+- Updates URL with selected filter value.
+- Uses `navigate()` to add query string.
 - Keeps filter state bookmarkable/shareable.
 
 **Important terms / keywords:**
 
 - Filter, query string update, `navigate`
+
+**Minimal example:**
+
+```jsx
+export const IssueFilter = () => {
+  const navigate = useNavigate()
+  const [status, setStatus] = useState("New")
+
+  const applyFilter = () => {
+    navigate(`/issues?status=${status}`)
+  }
+
+  return (
+    <div>
+      <select onChange={(e) => setStatus(e.target.value)}>
+        <option value="New">New</option>
+        <option value="Assigned">Assigned</option>
+      </select>
+      <button onClick={applyFilter}>Filter</button>
+    </div>
+  )
+}
+```
 
 ---
 
@@ -193,13 +336,40 @@
 
 **Key points:**
 
-- `fetch('/api/issues')` to get list.
+- `fetch('/api/issues')` retrieves list.
 - Parse JSON and store in state.
-- Render list using map.
+- Render list using `map`.
 
 **Important terms / keywords:**
 
 - GET request, `fetch`, `useEffect`, JSON
+
+**Minimal example:**
+
+```jsx
+import { useState, useEffect } from "react"
+
+export const IssueList = () => {
+  const [issues, setIssues] = useState([])
+
+  useEffect(() => {
+    const fetchIssues = async () => {
+      const response = await fetch("/api/issues")
+      const data = await response.json()
+      setIssues(data.records)
+    }
+    fetchIssues()
+  }, [])
+
+  return (
+    <ul>
+      {issues.map((i) => (
+        <li key={i.id}>{i.title}</li>
+      ))}
+    </ul>
+  )
+}
+```
 
 ---
 
@@ -210,12 +380,32 @@
 **Key points:**
 
 - Read `id` from route params.
-- Fetch record by `id`.
-- Bind fields to show existing values.
+- Fetch record by `id` to pre-fill fields.
+- Use `defaultValue` or state to show existing values.
 
 **Important terms / keywords:**
 
 - Edit page, pre-fill, `useParams`, `useEffect`
+
+**Minimal example:**
+
+```jsx
+export const IssueEdit = () => {
+  const { id } = useParams()
+  const [issue, setIssue] = useState({})
+
+  useEffect(() => {
+    const loadData = async () => {
+      const res = await fetch(`/api/issues/${id}`)
+      const data = await res.json()
+      setIssue(data.issue)
+    }
+    loadData()
+  }, [id])
+
+  return <input defaultValue={issue.title} />
+}
+```
 
 ---
 
@@ -225,8 +415,8 @@
 
 **Key points:**
 
-- Encapsulate structure and behavior (e.g., list, form, button).
-- Promote reuse and consistency across pages.
+- Encapsulate structure and behavior (list, form, button).
+- Improve reuse and consistent UI across pages.
 
 **Important terms / keywords:**
 
@@ -240,8 +430,8 @@
 
 **Key points:**
 
-- Uses `id` to target the resource.
-- Sends updated fields to the server.
+- Uses `id` to target resource.
+- Sends updated fields in request body.
 - UI should refresh local state after update.
 
 **Important terms / keywords:**
@@ -262,6 +452,20 @@
 **Important terms / keywords:**
 
 - DELETE request, remove, state update
+
+**Minimal example:**
+
+```jsx
+const deleteIssue = async (id) => {
+  const response = await fetch(`/api/issues/${id}`, {
+    method: "DELETE",
+  })
+
+  if (response.ok) {
+    setIssues((prevIssues) => prevIssues.filter((issue) => issue.id !== id))
+  }
+}
+```
 
 ---
 

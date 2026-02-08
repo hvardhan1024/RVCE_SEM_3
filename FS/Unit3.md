@@ -1,4 +1,5 @@
 # UNIT III – Introduction to MongoDB and Mongoose
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ac6f2a61-ba46-447c-b8f0-97c50f0f1179" />
 
 ## Complete Notes for Full Stack Development
 
@@ -3404,4 +3405,5 @@ const UserSchema = new Schema({
 ---
 
 **End of UNIT III Notes**
+
 

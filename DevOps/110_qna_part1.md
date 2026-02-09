@@ -351,7 +351,7 @@ Once executed, the local registry becomes operational and ready to store, push, 
 
 ---
 
-## Question 13: Assume the Docker is running on your host machine is split into two parts
+## Question 13: Assume the Doocker is running on your host machine is split into two parts—a daemon with a RESTful API and a client that talks to the daemon. Show the visual representation of specified scenario
 
 ### **Visual Representation**
 

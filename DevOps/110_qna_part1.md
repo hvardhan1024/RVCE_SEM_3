@@ -4,28 +4,28 @@
 
 ### Diagram 1: Kubernetes Architecture
 
-![[Pasted image 20260209202415.png]]
+![Pasted image 20260209202415.png](attachments/Pasted%20image%2020260209202415.png)
 (k8s architecture)
 
 ### Diagram 2
 
-![[Pasted image 20260209202502.png]]
+![Pasted image 20260209202502.png](attachments/Pasted%20image%2020260209202502.png)
 
 ### Diagram 3
 
-![[Pasted image 20260209202508.png]]
+![Pasted image 20260209202508.png](attachments/Pasted%20image%2020260209202508.png)
 
 ### Diagram 4
 
-![[Pasted image 20260209202513.png]]
+![Pasted image 20260209202513.png](attachments/Pasted%20image%2020260209202513.png)
 
 ### Diagram 5
 
-![[Pasted image 20260209202535.png]]
+![Pasted image 20260209202535.png](attachments/Pasted%20image%2020260209202535.png)
 
 ### Diagram 6
 
-![[Pasted image 20260209202547.png]]
+![Pasted image 20260209202547.png](attachments/Pasted%20image%2020260209202547.png)
 
 ---
 
@@ -83,7 +83,7 @@ Any five benefits: 1M each
 
 ### **Answer** (Diagram – 3M, Explanation - Before - 1M, After - 1M)
 
-![[Pasted image 20260209194710.png]]
+![Pasted image 20260209194710.png](attachments/Pasted%20image%2020260209194710.png)
 
 ### **Explanation**
 
@@ -132,7 +132,7 @@ Docker is a container-based platform that allows applications to be developed, s
 
 ### **Diagram** (2 Marks)
 
-![[Pasted image 20260209194750.png]]
+![Pasted image 20260209194750.png](attachments/Pasted%20image%2020260209194750.png)
 
 ### **Solution Scheme**
 
@@ -317,7 +317,7 @@ Once executed, the local registry becomes operational and ready to store, push, 
 
 ### **Diagram**
 
-![[Pasted image 20260209194924.png]]
+![Pasted image 20260209194924.png](attachments/Pasted%20image%2020260209194924.png)
 
 ### **Solution Scheme**
 
@@ -340,7 +340,7 @@ Once executed, the local registry becomes operational and ready to store, push, 
 
 ### **Diagram**
 
-![[Pasted image 20260209194947.png]]
+![Pasted image 20260209194947.png](attachments/Pasted%20image%2020260209194947.png)
 
 ### **Solution Scheme**
 
@@ -357,7 +357,7 @@ Once executed, the local registry becomes operational and ready to store, push, 
 
 A daemon with a RESTful API and a client that talks to the daemon.
 
-![[Pasted image 20260209195018.png]]
+![Pasted image 20260209195018.png](attachments/Pasted%20image%2020260209195018.png)
 
 ### **Solution Scheme**
 
@@ -437,7 +437,7 @@ sudo ifconfig
 
 ### **Illustration**
 
-![[Pasted image 20260209195046.png]]
+![Pasted image 20260209195046.png](attachments/Pasted%20image%2020260209195046.png)
 
 ### **Solution Scheme**
 
@@ -518,7 +518,7 @@ User → Docker Client → Docker Daemon → Containers
 ↓  
 Registry
 
-![[Pasted image 20260209195134.png]]
+![Pasted image 20260209195134.png](attachments/Pasted%20image%2020260209195134.png)
 
 ### **Components Explanation** (8 Marks)
 
@@ -540,7 +540,7 @@ Registry
 
 ### **RESTful API Diagram**
 
-![[Pasted image 20260209195153.png]]
+![Pasted image 20260209195153.png](attachments/Pasted%20image%2020260209195153.png)
 
 ### **Solution Scheme**
 
@@ -741,9 +741,9 @@ cd /home/deepika/mydocker
 
 ### **Diagrams**
 
-![[Pasted image 20260209195257.png]]
+![Pasted image 20260209195257.png](attachments/Pasted%20image%2020260209195257.png)
 
-![[Pasted image 20260209195312.png]]
+![Pasted image 20260209195312.png](attachments/Pasted%20image%2020260209195312.png)
 
 ### **Solution Scheme**
 
@@ -786,7 +786,7 @@ cd /home/deepika/mydocker
 
 ### **Comparison Diagram**
 
-![[Pasted image 20260209195359.png]]
+![Pasted image 20260209195359.png](attachments/Pasted%20image%2020260209195359.png)
 
 ### **Solution Scheme**
 
@@ -949,7 +949,7 @@ A single Docker image running multiple containers ensures identical environments
 
 ### **Benefits Diagram**
 
-![[Pasted image 20260209195512.png]]
+![Pasted image 20260209195512.png](attachments/Pasted%20image%2020260209195512.png)
 
 ### **Solution Scheme**
 
@@ -1003,7 +1003,7 @@ sudo docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix na
 
 ### **Illustration**
 
-![[Pasted image 20260209195548.png]]
+![Pasted image 20260209195548.png](attachments/Pasted%20image%2020260209195548.png)
 
 ### **Solution Scheme**
 
@@ -1016,9 +1016,9 @@ sudo docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix na
 
 ### **Architecture Diagrams**
 
-![[Pasted image 20260209195605.png]]
+![Pasted image 20260209195605.png](attachments/Pasted%20image%2020260209195605.png)
 
-![[Pasted image 20260209195611.png]]
+![Pasted image 20260209195611.png](attachments/Pasted%20image%2020260209195611.png)
 
 ### **Solution Scheme**
 
@@ -1340,7 +1340,7 @@ sudo docker ps
 
 ### **Flowchart** (6 Marks)
 
-![[Pasted image 20260209200035.png]]
+![Pasted image 20260209200035.png](attachments/Pasted%20image%2020260209200035.png)
 
 ### **Example** (6 Marks)
 
@@ -1958,7 +1958,7 @@ Step 5: 5 Marks (1 Mark Each)
 
 ### **CD Pipeline Illustration**
 
-![[Pasted image 20260209200234.png]]
+![Pasted image 20260209200234.png](attachments/Pasted%20image%2020260209200234.png)
 
 ### **Solution Scheme**
 
@@ -2194,11 +2194,11 @@ Automated builds ensure images are built and published automatically when code c
 
 ### **Typical Software Workflow** (6 Marks)
 
-![[Pasted image 20260209201023.png]]
+![Pasted image 20260209201023.png](attachments/Pasted%20image%2020260209201023.png)
 
 ### **After Docker Contract** (4 Marks)
 
-![[Pasted image 20260209201031.png]]
+![Pasted image 20260209201031.png](attachments/Pasted%20image%2020260209201031.png)
 
 ### **Solution Scheme**
 
@@ -2211,7 +2211,7 @@ Automated builds ensure images are built and published automatically when code c
 
 ### **Use Case Diagram** (10 Marks)
 
-![[Pasted image 20260209201051.png]]
+![Pasted image 20260209201051.png](attachments/Pasted%20image%2020260209201051.png)
 
 ### **Solution Scheme**
 
@@ -2279,15 +2279,15 @@ sudo docker exec etcd etcdctl get /my_name
 
 **An overloaded Jenkins Server:**
 
-![[Pasted image 20260209201130.png]]
+![Pasted image 20260209201130.png](attachments/Pasted%20image%2020260209201130.png)
 
 **Before Jenkins Server:**
 
-![[Pasted image 20260209201142.png]]
+![Pasted image 20260209201142.png](attachments/Pasted%20image%2020260209201142.png)
 
 **After Jenkins Server:**
 
-![[Pasted image 20260209201151.png]]
+![Pasted image 20260209201151.png](attachments/Pasted%20image%2020260209201151.png)
 
 ### **Solution Scheme**
 
@@ -2341,7 +2341,7 @@ COPY file2.txt .
 
 **Step 2:** Build the images respectively
 
-![[Pasted image 20260209201219.png]]
+![Pasted image 20260209201219.png](attachments/Pasted%20image%2020260209201219.png)
 
 ```bash
 sudo docker build -t image1 --target img1 .
@@ -2487,7 +2487,7 @@ curl http://localhost
 
 ### **Diagram** (5 Marks)
 
-![[Pasted image 20260209201251.png]]
+![Pasted image 20260209201251.png](attachments/Pasted%20image%2020260209201251.png)
 
 ### **Solution Scheme**
 

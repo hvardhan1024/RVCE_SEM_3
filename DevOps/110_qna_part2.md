@@ -365,7 +365,7 @@ Running the first application demonstrates how Kubernetes schedules and manages 
 
 ### **Illustrative Representation**
 
-![[Pasted image 20260209201452.png]]
+![Pasted image 20260209201452.png](attachments/Pasted%20image%2020260209201452.png)
 
 ### **Solution Scheme**
 
@@ -377,7 +377,7 @@ Diagram showing interaction between replication controller, pod, and service
 
 ### **System Illustration**
 
-![[Pasted image 20260209201505.png]]
+![Pasted image 20260209201505.png](attachments/Pasted%20image%2020260209201505.png)
 
 ### **Solution Scheme**
 
@@ -390,7 +390,7 @@ Diagram showing interaction between replication controller, pod, and service
 
 ### **Kubernetes Architecture**
 
-![[Pasted image 20260209201520.png]]
+![Pasted image 20260209201520.png](attachments/Pasted%20image%2020260209201520.png)
 
 ### **Solution Scheme**
 
@@ -593,10 +593,10 @@ minikube service nginx-deployment
 
 ### **Output Diagrams**
 
-![[Pasted image 20260209201640.png]]
+![Pasted image 20260209201640.png](attachments/Pasted%20image%2020260209201640.png)
 fig displaying a web app - ip address of k8s via minikube
 
-![[Pasted image 20260209201703.png]]
+![Pasted image 20260209201703.png](attachments/Pasted%20image%2020260209201703.png)
 
 ### **Solution Scheme**
 
@@ -641,7 +641,7 @@ Run on every node, maintaining running pods and providing the Kubernetes runtime
 
 ### **Architecture Diagram**
 
-![[Pasted image 20260209201753.png]]
+![Pasted image 20260209201753.png](attachments/Pasted%20image%2020260209201753.png)
 
 ### **Solution Scheme**
 
@@ -788,9 +788,9 @@ kubectl delete deployments --all
 
 ### **Output Screenshots**
 
-![[Pasted image 20260209201850.png]]
+![Pasted image 20260209201850.png](attachments/Pasted%20image%2020260209201850.png)
 
-![[Pasted image 20260209201857.png]]
+![Pasted image 20260209201857.png](attachments/Pasted%20image%2020260209201857.png)
 
 ### **Solution Scheme**
 
@@ -811,7 +811,7 @@ Containers in a pod must run on the same node to:
 
 ### **Diagram** (3 Marks)
 
-![[Pasted image 20260209201917.png]]
+![Pasted image 20260209201917.png](attachments/Pasted%20image%2020260209201917.png)
 
 ### **Solution Scheme**
 
@@ -885,7 +885,7 @@ kubectl apply -f pods.yaml
 
 ### **Output**
 
-![[Pasted image 20260209201942.png]]
+![Pasted image 20260209201942.png](attachments/Pasted%20image%2020260209201942.png)
 
 ### **Solution Scheme**
 
@@ -909,7 +909,7 @@ Contains the current information about the running pod, such as what condition t
 
 ### **Pod Definition Diagram**
 
-![[Pasted image 20260209202010.png]]
+![Pasted image 20260209202010.png](attachments/Pasted%20image%2020260209202010.png)
 
 ### **Solution Scheme**
 
@@ -923,7 +923,7 @@ Contains the current information about the running pod, such as what condition t
 
 ### **Diagram**
 
-![[Pasted image 20260209202037.png]]
+![Pasted image 20260209202037.png](attachments/Pasted%20image%2020260209202037.png)
 
 ### **Solution Scheme**
 
@@ -951,7 +951,7 @@ curl localhost:8888
 
 ### **Diagram**
 
-![[Pasted image 20260209202049.png]]
+![Pasted image 20260209202049.png](attachments/Pasted%20image%2020260209202049.png)
 
 ### **Solution Scheme**
 
@@ -1174,7 +1174,7 @@ kubectl get pods
 
 ### **Uncategorized Pods Diagram**
 
-![[Pasted image 20260209202200.png]]
+![Pasted image 20260209202200.png](attachments/Pasted%20image%2020260209202200.png)
 
 ### **Specifying Labels when Creating a Pod**
 

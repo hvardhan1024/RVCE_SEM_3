@@ -16,7 +16,7 @@
 
 #### Traditional Networking Architecture
 
-![Traditional Network Control](attachments/Pasted%20image%2020260211225659.png)
+![Traditional Network Control](attachments/Pasted%20image%2020260211213019.png)
 
 **Characteristics:**
 
@@ -50,7 +50,7 @@
 
 #### SDN Architecture
 
-![SDN Architecture](attachments/Pasted%20image%2020260211225741.png)
+![SDN Architecture](attachments/Pasted%20image%2020260211213019.png)
 
 **Characteristics:**
 
@@ -155,7 +155,7 @@
 
 ### Control Plane vs Data Plane Comparison
 
-![Software vs Hardware Forwarding](attachments/Pasted%20image%2020260211225942.png)
+![Software vs Hardware Forwarding](attachments/Pasted%20image%2020260211213059.png)
 
 | Aspect                     | Control Plane                              | Data Plane                      |
 | -------------------------- | ------------------------------------------ | ------------------------------- |
@@ -219,7 +219,7 @@
 
 ### OpenFlow Architecture
 
-![OpenFlow Architecture](attachments/Pasted%20image%2020260211230034.png)
+![OpenFlow Architecture](attachments/Pasted%20image%2020260211212957.png)
 
 **Components:**
 
@@ -291,7 +291,7 @@
 
 ### OpenFlow Flow Table
 
-![OpenFlow Flow Table](attachments/Pasted%20image%2020260211230114.png)
+![OpenFlow Flow Table](attachments/Pasted%20image%2020260211213119.png)
 
 **Structure:** Each flow entry consists of:
 
@@ -390,7 +390,7 @@ Packet arrives → Switch checks Flow Table(s)
 
 ## SDN Architecture Layers
 
-![SDN Architecture Layers](attachments/Pasted%20image%2020260211230218.png)
+![SDN Architecture Layers](attachments/Pasted%20image%2020260211213019.png)
 
 ### Three-Layer Model
 
@@ -525,7 +525,7 @@ POST /controller/nb/v2/flow/add
 
 ### 1. Distributed Control Plane (Traditional)
 
-![Distributed Control Plane](attachments/Pasted%20image%2020260211230258.png)
+![Distributed Control Plane](attachments/Pasted%20image%2020260211213059.png)
 
 **Architecture:** Each network device has its own control plane.
 
@@ -580,7 +580,7 @@ POST /controller/nb/v2/flow/add
 
 ### 2. Centralized Control Plane (SDN)
 
-![Centralized Control Plane](attachments/Pasted%20image%2020260211230328.png)
+![Centralized Control Plane](attachments/Pasted%20image%2020260211213019.png)
 
 **Architecture:** Single controller (or cluster) manages all devices.
 
@@ -840,7 +840,7 @@ POST /controller/nb/v2/flow/add
 
 ### MPLS Label Operations (Revisited)
 
-![MPLS Operations](attachments/Pasted%20image%2020260211230418.png)
+![MPLS Operations](attachments/Pasted%20image%2020260211213257.png)
 
 ---
 

@@ -135,11 +135,13 @@ In hierarchical routing architectures (especially OSPF), an Autonomous System is
 | **NSSA**           | ✓ Allowed                  | ✗ Blocked, Type 7 used | Optional        |
 | **Totally NSSA**   | ✗ Blocked                  | ✗ Blocked, Type 7 used | Injected by ABR |
 
+![Types of Area](attachments/Pasted%20image%2020260211222459.png)
+
 ---
 
 ## Types of Routers in OSPF
 
-![Router Types in OSPF](attachments/Pasted%20image%2020260211225108.png)
+![Router Types in OSPF](attachments/Pasted%20image%2020260211222326.png)
 
 ### Overview
 
@@ -550,7 +552,7 @@ AS Path: AS100 → AS200 → AS300 → AS400
 
 ### BGP Peering
 
-![BGP Transit and Peering](attachments/Pasted%20image%2020260211225255.png)
+![BGP Transit and Peering](attachments/Pasted%20image%2020260211222536.png)
 
 #### Types of BGP Sessions
 
@@ -734,6 +736,8 @@ ISP AS 100 ←→ ISP AS 200 (peers)
 2001:0db8:85a3:0000:0000:8a2e:0370:7334
 ```
 
+![IPv6 Address Format](attachments/Pasted%20image%2020260211222611.png)
+
 #### Compression Rules
 
 **Rule 1: Leading Zero Suppression**
@@ -770,7 +774,7 @@ ISP AS 100 ←→ ISP AS 200 (peers)
 
 ### IPv6 Header Format
 
-![IPv6 Header](attachments/Pasted%20image%2020260211225416.png)
+![IPv6 Header](attachments/Pasted%20image%2020260211222659.png)
 
 #### Fixed Header: 40 Bytes
 
@@ -879,11 +883,13 @@ ISP AS 100 ←→ ISP AS 200 (peers)
 | **LSP (Label Switched Path)**          | Complete path through MPLS network defined by label sequence                                             |
 | **FEC (Forwarding Equivalence Class)** | Group of packets receiving same forwarding treatment                                                     |
 
+![Key Terminologies in MPLS](attachments/Pasted%20image%2020260211222731.png)
+
 ---
 
 ### MPLS Label Format
 
-![MPLS Label Format](attachments/Pasted%20image%2020260211225459.png)
+![MPLS Label Format](attachments/Pasted%20image%2020260211222810.png)
 
 **Label Header:** 32 bits inserted between Layer 2 and Layer 3 headers
 
@@ -915,7 +921,7 @@ ISP AS 100 ←→ ISP AS 200 (peers)
 
 ### MPLS Operations
 
-![MPLS Operations](attachments/Pasted%20image%2020260211225525.png)
+![MPLS Operations](attachments/Pasted%20image%2020260211222906.png)
 
 #### Core MPLS Operations
 
@@ -1038,6 +1044,8 @@ R2 → R3: [Label:205][IP: A→B][Data]     (SWAP)
 R3 → R4: [Label:300][IP: A→B][Data]     (SWAP)
 R4 → B: [IP: A→B][Data]                 (POP)
 ```
+
+![MPLS Working](attachments/Pasted%20image%2020260211222930.png)
 
 ---
 
